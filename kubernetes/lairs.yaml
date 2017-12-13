@@ -1,0 +1,44 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: lairs-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: lairs
+    spec:
+      containers:
+      - image: rlamp/lairbnb-lairs:latest
+        name: lairs
+        env:
+          - name: KUMULUZEE_DISCOVERY_CLUSTER
+            value: bluemix
+          - name: KUMULUZEE_DISCOVERY_ETCD_HOSTS
+            value: http://etcd:2379
+          - name: KUMULUZEE_CONFIG_ETCD_HOSTS
+            value: http://etcd:2379
+          - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
+            value: jdbc:postgresql://postgres-lairs:5432/lairs
+          - name: KUMULUZEE_SERVER_BASEURL
+            value: http://168.1.149.132:30861
+        ports:
+        - containerPort: 8081
+          name: server
+          protocol: TCP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: lairs
+spec:
+  type: NodePort
+  ports:
+  - port: 8081
+    protocol: TCP
+    targetPort: 8081
+  selector:
+    app: lairs
