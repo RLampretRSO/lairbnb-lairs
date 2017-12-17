@@ -35,6 +35,14 @@ kumuluzee:
       http-health-check:
         - connection-url: http://192.168.99.100:8080/v1/users
         - connection-url: http://192.168.99.100:8082/v1/reservations
+  metrics:
+    servlet:
+      enabled: true
+      mapping: /metrics
+    web-instrumentation:
+    - name: lairs-endpoint
+      url-pattern: /v1/lairs/*
+
 
 service-properties:
   service:
