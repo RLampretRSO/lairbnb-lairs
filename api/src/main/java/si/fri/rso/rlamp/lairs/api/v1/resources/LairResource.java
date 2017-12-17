@@ -27,15 +27,15 @@ public class LairResource {
 
     @GET
     @Path("/all")
-    public Response getAllCustomers() {
-        List<Lair> customers = lairBean.getAllLairs();
-        return Response.ok(customers).build();
+    public Response getAllLairs() {
+        List<Lair> lairs = lairBean.getAllLairs();
+        return Response.ok(lairs).build();
     }
 
     @GET
-    public Response getCustomers() {
-        List<Lair> customers = lairBean.getLairs(createQuery());
-        return Response.ok(customers).build();
+    public Response getLairs() {
+        List<Lair> lairs = lairBean.getLairs(createQuery());
+        return Response.ok(lairs).build();
     }
 
     @GET
@@ -47,7 +47,7 @@ public class LairResource {
 
     @GET
     @Path("/{lairId}")
-    public Response getCustomer(@PathParam("lairId") Integer lairId) {
+    public Response getLair(@PathParam("lairId") Integer lairId) {
         Lair lair = lairBean.getLair(lairId);
         return lair != null
                 ? Response.ok(lair).build()
