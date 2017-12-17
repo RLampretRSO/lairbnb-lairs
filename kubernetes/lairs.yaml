@@ -23,6 +23,12 @@ spec:
             value: jdbc:postgresql://postgres-lairs:5432/lairs
           - name: KUMULUZEE_SERVER_BASEURL
             value: http://168.1.149.132:30861
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: server
+          initialDelaySeconds: 20
+          periodSeconds: 5
         ports:
         - containerPort: 8081
           name: server
