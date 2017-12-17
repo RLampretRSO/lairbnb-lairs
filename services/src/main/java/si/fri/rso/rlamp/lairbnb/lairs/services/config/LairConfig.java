@@ -14,6 +14,9 @@ public class LairConfig {
     @ConfigValue(value = "external-services.reservation-service.enabled", watch = true)
     private boolean reservationServiceEnabled;
 
+    @ConfigValue(value = "service.healthy", watch = true)
+    private boolean healthy;
+
     public boolean isUserServiceEnabled() {
         return userServiceEnabled;
     }
@@ -28,5 +31,13 @@ public class LairConfig {
 
     public void setReservationServiceEnabled(boolean reservationServiceEnabled) {
         this.reservationServiceEnabled = reservationServiceEnabled;
+    }
+
+    public boolean isHealthy() {
+        return healthy;
+    }
+
+    public void setHealthy(boolean healthy) {
+        this.healthy = healthy;
     }
 }
