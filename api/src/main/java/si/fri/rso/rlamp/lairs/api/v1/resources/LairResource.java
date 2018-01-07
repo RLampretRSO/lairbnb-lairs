@@ -1,5 +1,6 @@
 package si.fri.rso.rlamp.lairs.api.v1.resources;
 
+import com.kumuluz.ee.logs.cdi.Log;
 import com.kumuluz.ee.rest.beans.QueryParameters;
 import si.fri.rso.rlamp.lairbnb.lairs.models.Lair;
 import si.fri.rso.rlamp.lairbnb.lairs.services.LairService;
@@ -13,6 +14,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.util.List;
 
+@Log
 @RequestScoped
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
