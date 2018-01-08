@@ -14,7 +14,7 @@ cache:
   - $HOME/.m2
 
 env:
-  - DOCKER_IMAGE=rlamp/lairbnb-lairs:latest
+  - DOCKER_IMAGE=rlamp/lairbnb-lairs:0.1
 
 script:
   - mvn clean package -U
